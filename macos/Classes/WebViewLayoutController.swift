@@ -22,7 +22,7 @@ class WebViewLayoutController: NSViewController {
 
   private var javaScriptHandlerNames: [String] = []
 
-  weak var webViewPlugin: DesktopWebviewWindowPlugin?
+  weak var webViewPlugin: WebviewUniversalPlugin?
 
   private var defaultUserAgent: String?
 
@@ -53,7 +53,7 @@ class WebViewLayoutController: NSViewController {
     titleBarController.view.translatesAutoresizingMaskIntoConstraints = false
 
     // Register titlebar plugins
-    ClientMessageChannelPlugin.register(with: titleBarController.registrar(forPlugin: "DesktopWebviewWindowPlugin"))
+    ClientMessageChannelPlugin.register(with: titleBarController.registrar(forPlugin: "WebviewUniversalPlugin"))
 
     let flutterView = titleBarController.view
 

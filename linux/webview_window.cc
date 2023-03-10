@@ -89,7 +89,7 @@ WebviewWindow::WebviewWindow(
   auto *title_bar = fl_view_new(project);
 
   g_autoptr(FlPluginRegistrar) webview_universal_registrar =
-      fl_plugin_registry_get_registrar_for_plugin(FL_PLUGIN_REGISTRY(title_bar), "DesktopWebviewWindowPlugin");
+      fl_plugin_registry_get_registrar_for_plugin(FL_PLUGIN_REGISTRY(title_bar), "WebviewUniversalPlugin");
   client_message_channel_plugin_register_with_registrar(webview_universal_registrar);
 
   gtk_widget_set_size_request(GTK_WIDGET(title_bar), -1, title_bar_height);

@@ -16,7 +16,7 @@
 extern "C" {
 #endif
 
-FLUTTER_PLUGIN_EXPORT void DesktopWebviewWindowPluginRegisterWithRegistrar(
+FLUTTER_PLUGIN_EXPORT void WebviewUniversalPluginRegisterWithRegistrar(
     FlutterDesktopPluginRegistrarRef registrar);
 
 #if defined(__cplusplus)

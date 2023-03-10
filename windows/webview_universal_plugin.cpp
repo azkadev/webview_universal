@@ -3,7 +3,7 @@
 #include "message_channel_plugin.h"
 #include "web_view_window_plugin.h"
 
-void DesktopWebviewWindowPluginRegisterWithRegistrar(
+void WebviewUniversalPluginRegisterWithRegistrar(
     FlutterDesktopPluginRegistrarRef registrar) {
   WebviewWindowPlugin::RegisterWithRegistrar(
       flutter::PluginRegistrarManager::GetInstance()

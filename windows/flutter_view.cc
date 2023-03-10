@@ -24,7 +24,7 @@ FlutterView::FlutterView(std::vector<std::string> arguments) {
     std::cerr << "Failed to setup Flutter engine." << std::endl;
     return;
   }
-  RegisterClientMessageChannelPlugin(flutter_controller_->engine()->GetRegistrarForPlugin("DesktopWebviewWindowPlugin"));
+  RegisterClientMessageChannelPlugin(flutter_controller_->engine()->GetRegistrarForPlugin("WebviewUniversalPlugin"));
 }
 
 FlutterView::~FlutterView() {

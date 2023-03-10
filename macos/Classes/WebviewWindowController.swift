@@ -22,7 +22,7 @@ class WebviewWindowController: NSWindowController {
   
   private let title: String
   
-  public weak var webviewPlugin: DesktopWebviewWindowPlugin?
+  public weak var webviewPlugin: WebviewUniversalPlugin?
 
   init(viewId: Int64, methodChannel: FlutterMethodChannel,
        width: Int, height: Int,

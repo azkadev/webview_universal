@@ -1,7 +1,6 @@
 name: webview_universal
 description: Show a webview window on your flutter desktop application.
-version: 0.2.0
-homepage: https://github.com/MixinNetwork/flutter-plugins/tree/main/packages/webview_universal
+version: 0.0.0
 
 platforms:
   android:
@@ -24,11 +23,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^1.0.0
-
-# For information on the generic Dart part of this file, see the
-# following page: https://dart.dev/tools/pub/pubspec
-
-# The following section is specific to Flutter.
+ 
 flutter:
   plugin:
     platforms:
