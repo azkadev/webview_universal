@@ -25,11 +25,19 @@ class _MyAppState extends State<MyApp> {
       setState: setState,
       uri: Uri.parse("https://flutter.dev"),
     );
-  } 
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: FloatingActionButton(
+          onPressed: () {
+            webViewController.goBackSync();
+          },
+          child: Icon(Icons.abc),
+        ),
+      ),
       body: WebView(
         controller: webViewController,
       ),
