@@ -1,6 +1,6 @@
 name: webview_universal
-description: Show a webview window on your flutter desktop application.
-version: 0.0.3
+description: Show a webview window on your flutter cross platform android, ios, linux, macos, web, windows.
+version: 0.0.4
 
 platforms:
   android:

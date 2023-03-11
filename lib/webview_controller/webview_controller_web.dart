@@ -15,19 +15,19 @@ class WebViewController {
   bool is_desktop = ((Platform.isLinux || Platform.isMacOS || Platform.isWindows) && kIsWeb == false);
   bool is_mobile = (Platform.isAndroid || Platform.isIOS || kIsWeb);
   WebViewController();
-  void init({
+  Future<void> init({
     required BuildContext context,
     required void Function(void Function() fn) setState,
     required Uri uri,
-  }) {
+  }) async {
     if (is_mobile) {
       late final webview_flutter.PlatformWebViewControllerCreationParams params;
-      if (webview_flutter.WebViewPlatform.instance is webview_flutter_wkwebview.WebKitWebViewPlatform) { 
+      if (webview_flutter.WebViewPlatform.instance is webview_flutter_wkwebview.WebKitWebViewPlatform) {
         params = webview_flutter_wkwebview.WebKitWebViewControllerCreationParams(
           allowsInlineMediaPlayback: true,
           mediaTypesRequiringUserAction: const <webview_flutter_wkwebview.PlaybackMediaTypes>{},
         );
-      } else { 
+      } else {
         params = const webview_flutter.PlatformWebViewControllerCreationParams();
       }
       webview_mobile_controller = webview_flutter.WebViewController.fromPlatformCreationParams(params);
@@ -81,18 +81,18 @@ Page resource error:
       }
       is_init = true;
     } else if (is_desktop) {
-      // bool isWebviewAvailable =  webview_desktop.WebviewWindow.isWebviewAvailable();
-      // if (isWebviewAvailable) {
-      //   webview_desktop.Webview webview_desktop_controller =  webview_desktop.WebviewWindow.create(
-      //     configuration: webview_desktop.CreateConfiguration(
-      //       titleBarTopPadding: Platform.isMacOS ? 20 : 0,
-      //     ),
-      //   );
-      //   setState(() {});
-      //   is_init = true;
-      //   webview_desktop_controller.setBrightness(Brightness.dark);
-      //   webview_desktop_controller.launch(uri.toString());
-      // }
+      bool isWebviewAvailable = await webview_desktop.WebviewWindow.isWebviewAvailable();
+      if (isWebviewAvailable) {
+        webview_desktop.Webview webview_desktop_controller = await webview_desktop.WebviewWindow.create(
+          configuration: webview_desktop.CreateConfiguration(
+            titleBarTopPadding: Platform.isMacOS ? 20 : 0,
+          ),
+        );
+        setState(() {});
+        is_init = true;
+        webview_desktop_controller.setBrightness(Brightness.dark);
+        webview_desktop_controller.launch(uri.toString());
+      }
     }
   }
 }
