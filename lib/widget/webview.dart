@@ -7,13 +7,16 @@ import "package:webview_universal/webview_controller/webview_controller.dart" as
 class WebView extends StatelessWidget {
   final webview_controller.WebViewController controller;
 
-  const WebView({super.key, required this.controller});
+  const WebView({
+    super.key,
+    required this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
     if (Platform.isAndroid || Platform.isIOS || kIsWeb) {
       return webview_flutter.WebViewWidget(
-        controller: controller.webview_movile_controller,
+        controller: controller.webview_mobile_controller,
       );
     }
     return Container();
