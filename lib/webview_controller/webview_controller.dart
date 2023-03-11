@@ -31,8 +31,6 @@ extension WebViewControllerExtension on WebViewController {
     if (is_mobile) {
       await webview_mobile_controller.loadRequest(uri);
     }
-    if (is_desktop) {
-      
-    }
+    if (is_desktop) {}
   }
 }

@@ -4,8 +4,7 @@ Webview universal yang mudah di gunakan
 
 
 ```dart
-
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
 import "package:webview_universal/webview_universal.dart";
 
 void main(List<String> args) {
@@ -27,8 +26,11 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    task();
+  }
 
-    webViewController.init(
+  Future<void> task() async {
+    await webViewController.init(
       context: context,
       uri: Uri.parse("https://flutter.dev"),
     );
@@ -36,8 +38,10 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return WebView(
-      controller: webViewController,
+    return Scaffold(
+      body: WebView(
+        controller: webViewController,
+      ),
     );
   }
 }
