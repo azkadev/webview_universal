@@ -1,5 +1,6 @@
-export 'webview.dart';
-import 'webview.dart';
+import 'webview_controller_web.dart';
+
+export 'webview_controller_web.dart'; 
 
 extension WebViewControllerExtension on WebViewController {
   Future<void> goBack() async {

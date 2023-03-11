@@ -1,6 +1,6 @@
 name: webview_universal
 description: Show a webview window on your flutter desktop application.
-version: 0.0.2
+version: 0.0.3
 
 platforms:
   android:
@@ -21,6 +21,7 @@ dependencies:
   universal_io: ^2.2.0
   webview_flutter: ^4.0.6
   webview_flutter_android: ^3.4.2
+  webview_flutter_web: ^0.2.2+1
   webview_flutter_wkwebview: ^3.2.1
 
 dev_dependencies:

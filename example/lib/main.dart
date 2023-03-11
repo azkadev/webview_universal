@@ -20,15 +20,12 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    task();
-  }
-
-  Future<void> task() async {
-    await webViewController.init(
+    webViewController.init(
       context: context,
+      setState: setState,
       uri: Uri.parse("https://flutter.dev"),
     );
-  }
+  } 
 
   @override
   Widget build(BuildContext context) {

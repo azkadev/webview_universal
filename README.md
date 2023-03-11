@@ -3,6 +3,18 @@
 Webview universal yang mudah di gunakan
 
 
+## Tested On 
+ 
+| OS      | Tested     |
+|---------|------------|
+| Android | Tested     |
+| Linux   | Tested     |
+| Windows | Tested     |
+| ios     | Not Tested |
+| Web     | Tested     |
+| macOS   | Not Tested |
+
+
 ```dart
 import 'package:flutter/material.dart';
 import "package:webview_universal/webview_universal.dart";
