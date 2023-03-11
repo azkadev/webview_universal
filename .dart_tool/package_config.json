@@ -56,6 +56,12 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "flutter_web_plugins",
+      "rootUri": "file:///home/hexaminate/development/flutter/packages/flutter_web_plugins",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "js",
       "rootUri": "file:///home/hexaminate/.pub-cache/hosted/pub.dev/js-0.6.5",
       "packageUri": "lib/",
@@ -90,6 +96,12 @@
       "rootUri": "file:///home/hexaminate/.pub-cache/hosted/pub.dev/path-1.8.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "plugin_platform_interface",
+      "rootUri": "file:///home/hexaminate/.pub-cache/hosted/pub.dev/plugin_platform_interface-2.1.4",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
     },
     {
       "name": "sky_engine",
@@ -134,19 +146,61 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "typed_data",
+      "rootUri": "file:///home/hexaminate/.pub-cache/hosted/pub.dev/typed_data-1.3.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "universal_io",
+      "rootUri": "file:///home/hexaminate/.pub-cache/hosted/pub.dev/universal_io-2.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.15"
+    },
+    {
       "name": "vector_math",
       "rootUri": "file:///home/hexaminate/.pub-cache/hosted/pub.dev/vector_math-2.1.4",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
     {
+      "name": "webview_flutter",
+      "rootUri": "file:///home/hexaminate/.pub-cache/hosted/pub.dev/webview_flutter-4.0.6",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "webview_flutter_android",
+      "rootUri": "file:///home/hexaminate/.pub-cache/hosted/pub.dev/webview_flutter_android-3.4.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "webview_flutter_platform_interface",
+      "rootUri": "file:///home/hexaminate/.pub-cache/hosted/pub.dev/webview_flutter_platform_interface-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "webview_flutter_web",
+      "rootUri": "file:///home/hexaminate/.pub-cache/hosted/pub.dev/webview_flutter_web-0.2.2+1",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
+      "name": "webview_flutter_wkwebview",
+      "rootUri": "file:///home/hexaminate/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
       "name": "webview_universal",
       "rootUri": "../",
       "packageUri": "lib/",
-      "languageVersion": "2.14"
+      "languageVersion": "2.19"
     }
   ],
-  "generated": "2023-03-10T10:44:16.159283Z",
+  "generated": "2023-03-11T13:58:09.977729Z",
   "generator": "pub",
   "generatorVersion": "2.19.2"
 }

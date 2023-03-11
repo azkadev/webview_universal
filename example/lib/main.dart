@@ -1,184 +1,212 @@
-import 'dart:io';
+// // Copyright 2013 The Flutter Authors. All rights reserved.
+// // Use of this source code is governed by a BSD-style license that can be
+// // found in the LICENSE file.
 
-import 'package:webview_universal/webview_desktop/webview_universal.dart';
-import 'package:flutter/material.dart';
-import 'package:path/path.dart' as p;
-import 'package:path_provider/path_provider.dart';
+// // ignore_for_file: public_member_api_docs
+
+// import 'package:flutter/foundation.dart';
+// import 'package:flutter/material.dart';
+// import 'package:webview_flutter/webview_flutter.dart';
+// // #docregion platform_imports
+// // Import for Android features.
+// import 'package:webview_flutter_android/webview_flutter_android.dart';
+// // Import for iOS features.
+// import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
+// // #enddocregion platform_imports
+
+// void main() => runApp(const MaterialApp(home: WebViewExample()));
+
+// class WebViewExample extends StatefulWidget {
+//   const WebViewExample({super.key});
+
+//   @override
+//   State<WebViewExample> createState() => _WebViewExampleState();
+// }
+
+// class _WebViewExampleState extends State<WebViewExample> {
+//   late final WebViewController webViewController;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     late final PlatformWebViewControllerCreationParams params;
+//     if (WebViewPlatform.instance is WebKitWebViewPlatform) {
+//       params = WebKitWebViewControllerCreationParams(
+//         allowsInlineMediaPlayback: true,
+//         mediaTypesRequiringUserAction: const <PlaybackMediaTypes>{},
+//       );
+//     } else {
+//       params = const PlatformWebViewControllerCreationParams();
+//     }
+//     webViewController = WebViewController.fromPlatformCreationParams(params);
+
+//     if (!kIsWeb) {
+//       webViewController.setJavaScriptMode(JavaScriptMode.unrestricted);
+//       // webViewController.setBackgroundColor(const Color(0x00000000));
+//       webViewController.setNavigationDelegate(
+//         NavigationDelegate(
+//           onProgress: (int progress) {
+//             debugPrint('WebView is loading (progress : $progress%)');
+//           },
+//           onPageStarted: (String url) {
+//             debugPrint('Page started loading: $url');
+//           },
+//           onPageFinished: (String url) {
+//             debugPrint('Page finished loading: $url');
+//           },
+//           onWebResourceError: (WebResourceError error) {
+//             debugPrint('''
+// Page resource error:
+//   code: ${error.errorCode}
+//   description: ${error.description}
+//   errorType: ${error.errorType}
+//   isForMainFrame: ${error.isForMainFrame}
+//           ''');
+//           },
+//           onNavigationRequest: (NavigationRequest request) {
+//             if (request.url.startsWith('https://www.youtube.com/')) {
+//               debugPrint('blocking navigation to ${request.url}');
+//               return NavigationDecision.prevent;
+//             }
+//             debugPrint('allowing navigation to ${request.url}');
+//             return NavigationDecision.navigate;
+//           },
+//         ),
+//       );
+//       webViewController.addJavaScriptChannel(
+//         'Toaster',
+//         onMessageReceived: (JavaScriptMessage message) {
+//           ScaffoldMessenger.of(context).showSnackBar(
+//             SnackBar(content: Text(message.message)),
+//           );
+//         },
+//       );
+//     }
+
+//     webViewController.loadRequest(Uri.parse("https://checkout-staging.xendit.co/web/640c81da4dce5edecc8af80d"));
+//     // #docregion platform_features
+//     if (webViewController.platform is AndroidWebViewController) {
+//       AndroidWebViewController.enableDebugging(false);
+//       (webViewController.platform as AndroidWebViewController).setMediaPlaybackRequiresUserGesture(false);
+//     }
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       // backgroundColor: Colors.green,
+//       appBar: AppBar(
+//         title: const Text('Flutter WebView example'),
+//         // This drop down menu demonstrates that Flutter widgets can be shown over the web view.
+//         actions: <Widget>[
+//           NavigationControls(webViewController: webViewController),
+//           // SampleMenu(webViewController: _controller),
+//         ],
+//       ),
+//       body: WebViewWidget(
+//         controller: webViewController,
+//       ),
+//       floatingActionButton: FloatingActionButton(
+//         onPressed: () async {
+//           print("azka");
+//           await webViewController.loadRequest(Uri.parse("https://checkout-staging.xendit.co/web/640c8077bda105004e1dc6f2"));
+//         },
+//         child: Icon(
+//           Icons.add_circle_outline_sharp,
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// class NavigationControls extends StatelessWidget {
+//   const NavigationControls({
+//     super.key,
+//     required this.webViewController,
+//   });
+
+//   final WebViewController webViewController;
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       children: <Widget>[
+//         IconButton(
+//           icon: const Icon(Icons.arrow_back_ios),
+//           onPressed: () async {
+//             await webViewController.loadRequest(Uri.parse("https://checkout-staging.xendit.co/web/640c8077bda105004e1dc6f2"));
+//           },
+//         ),
+//         IconButton(
+//           icon: const Icon(Icons.arrow_back_ios),
+//           onPressed: () async {
+//             if (await webViewController.canGoBack()) {
+//               await webViewController.goBack();
+//             } else {
+//               if (context.mounted) {
+//                 ScaffoldMessenger.of(context).showSnackBar(
+//                   const SnackBar(content: Text('No back history item')),
+//                 );
+//               }
+//             }
+//           },
+//         ),
+//         IconButton(
+//           icon: const Icon(Icons.arrow_forward_ios),
+//           onPressed: () async {
+//             if (await webViewController.canGoForward()) {
+//               await webViewController.goForward();
+//             } else {
+//               if (context.mounted) {
+//                 ScaffoldMessenger.of(context).showSnackBar(
+//                   const SnackBar(content: Text('No forward history item')),
+//                 );
+//               }
+//             }
+//           },
+//         ),
+//         IconButton(
+//           icon: const Icon(Icons.replay),
+//           onPressed: () => webViewController.reload(),
+//         ),
+//       ],
+//     );
+//   }
+// }
+
+import 'package:flutter/material.dart'; 
+import "package:webview_universal/webview_universal.dart";
 
 void main(List<String> args) {
-  debugPrint('args: $args');
-  if (runWebViewTitleBarWidget(args)) {
-    return;
-  }
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp(const MaterialApp(
+    home: MyApp(),
+  ));
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  final TextEditingController _controller = TextEditingController(
-    text: 'https://example.com',
-  );
-
-  bool? _webviewAvailable;
+  WebViewController webViewController = WebViewController();
 
   @override
   void initState() {
     super.initState();
-    WebviewWindow.isWebviewAvailable().then((value) {
-      setState(() {
-        _webviewAvailable = value;
-      });
-    });
-  }
 
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
+    webViewController.init(
+      context: context,
+      uri: Uri.parse("https://flutter.dev"),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Plugin example app'),
-          actions: [
-            IconButton(
-              onPressed: () async {
-                final webview = await WebviewWindow.create(
-                  configuration: CreateConfiguration(
-                    windowHeight: 1280,
-                    windowWidth: 720,
-                    title: "ExampleTestWindow",
-                    titleBarTopPadding: Platform.isMacOS ? 20 : 0,
-                    userDataFolderWindows: await _getWebViewPath(),
-                  ),
-                );
-                webview
-                  ..registerJavaScriptMessageHandler("test", (name, body) {
-                    debugPrint('on javaScipt message: $name $body');
-                  })
-                  ..setApplicationNameForUserAgent(" WebviewExample/1.0.0")
-                  ..setPromptHandler((prompt, defaultText) {
-                    if (prompt == "test") {
-                      return "Hello World!";
-                    } else if (prompt == "init") {
-                      return "initial prompt";
-                    }
-                    return "";
-                  })
-                  ..addScriptToExecuteOnDocumentCreated("""
-  const mixinContext = {
-    platform: 'Desktop',
-    conversation_id: 'conversationId',
-    immersive: false,
-    app_version: '1.0.0',
-    appearance: 'dark',
-  }
-  window.MixinContext = {
-    getContext: function() {
-      return JSON.stringify(mixinContext)
-    }
-  }
-""")
-                  ..launch("http://localhost:3000/test.html");
-              },
-              icon: const Icon(Icons.bug_report),
-            )
-          ],
-        ),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                TextField(controller: _controller),
-                const SizedBox(height: 16),
-                TextButton(
-                  onPressed: _webviewAvailable != true ? null : _onTap,
-                  child: const Text('Open'),
-                ),
-                const SizedBox(height: 20),
-                TextButton(
-                  onPressed: () async {
-                    await WebviewWindow.clearAll(
-                      userDataFolderWindows: await _getWebViewPath(),
-                    );
-                    debugPrint('clear complete');
-                  },
-                  child: const Text('Clear all'),
-                )
-              ],
-            ),
-          ),
-        ),
-      ),
+    return WebView(
+      controller: webViewController,
     );
   }
-
-  void _onTap() async {
-    final webview = await WebviewWindow.create(
-      configuration: CreateConfiguration(
-        userDataFolderWindows: await _getWebViewPath(),
-        titleBarTopPadding: Platform.isMacOS ? 20 : 0,
-      ),
-    );
-    webview
-      ..setBrightness(Brightness.dark)
-      ..setApplicationNameForUserAgent(" WebviewExample/1.0.0")
-      ..launch(_controller.text)
-      ..addOnUrlRequestCallback((url) {
-        debugPrint('url: $url');
-        final uri = Uri.parse(url);
-        if (uri.path == '/login_success') {
-          debugPrint('login success. token: ${uri.queryParameters['token']}');
-          webview.close();
-        }
-      })
-      ..onClose.whenComplete(() {
-        debugPrint("on close");
-      });
-    await Future.delayed(const Duration(seconds: 2));
-    for (final javaScript in _javaScriptToEval) {
-      try {
-        final ret = await webview.evaluateJavaScript(javaScript);
-        debugPrint('evaluateJavaScript: $ret');
-      } catch (e) {
-        debugPrint('evaluateJavaScript error: $e \n $javaScript');
-      }
-    }
-  }
-}
-
-const _javaScriptToEval = [
-  """
-  function test() {
-    return;
-  }
-  test();
-  """,
-  'eval({"name": "test", "user_agent": navigator.userAgent})',
-  '1 + 1',
-  'undefined',
-  '1.0 + 1.0',
-  '"test"',
-];
-
-Future<String> _getWebViewPath() async {
-  final document = await getApplicationDocumentsDirectory();
-  return p.join(
-    document.path,
-    'webview_universal',
-  );
 }
