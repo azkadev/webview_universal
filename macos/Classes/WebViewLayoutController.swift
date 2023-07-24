@@ -106,7 +106,7 @@ class WebViewLayoutController: NSViewController {
         "id": viewId,
         "canGoBack": webView.canGoBack,
         "canGoForward": webView.canGoForward,
-      ])
+      ] as [String: Any])
     } else if keyPath == "loading" {
       if webView.isLoading {
         methodChannel.invokeMethod("onNavigationStarted", arguments: [
@@ -205,7 +205,7 @@ extension WebViewLayoutController: WKNavigationDelegate {
     methodChannel.invokeMethod("onUrlRequested", arguments: [
       "id": viewId,
       "url": url.absoluteString,
-    ])
+    ] as [String: Any])
 
     decisionHandler(.allow)
   }
@@ -223,7 +223,7 @@ extension WebViewLayoutController: WKUIDelegate {
         "id": viewId,
         "prompt": prompt,
         "defaultText": defaultText ?? "",
-      ]) { result in
+      ] as [String: Any]) { result in
       completionHandler((result as? String) ?? "")
     }
   }
@@ -244,6 +244,6 @@ extension WebViewLayoutController: WKScriptMessageHandler {
         "id": viewId,
         "name": message.name,
         "body": message.body,
-      ])
+      ] as [String: Any])
   }
 }
