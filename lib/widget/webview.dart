@@ -2,7 +2,8 @@ import "package:universal_io/io.dart";
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart' as webview_flutter;
-import "package:webview_universal/webview_controller/webview_controller.dart" as webview_controller;
+import "package:webview_universal/webview_controller/webview_controller.dart"
+    as webview_controller;
 
 class WebView extends StatelessWidget {
   final webview_controller.WebViewController controller;

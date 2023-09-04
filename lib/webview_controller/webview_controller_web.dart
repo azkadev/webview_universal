@@ -4,15 +4,20 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:universal_io/io.dart';
 import 'package:webview_flutter/webview_flutter.dart' as webview_flutter;
-import 'package:webview_flutter_android/webview_flutter_android.dart' as webview_flutter_android;
-import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart' as webview_flutter_wkwebview;
-import "package:webview_universal/webview_desktop/webview_desktop.dart" as webview_desktop;
+import 'package:webview_flutter_android/webview_flutter_android.dart'
+    as webview_flutter_android;
+import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart'
+    as webview_flutter_wkwebview;
+import "package:webview_universal/webview_desktop/webview_desktop.dart"
+    as webview_desktop;
 
 class WebViewController {
   late final webview_desktop.Webview webview_desktop_controller;
   late final webview_flutter.WebViewController webview_mobile_controller;
   bool is_init = false;
-  bool is_desktop = ((Platform.isLinux || Platform.isMacOS || Platform.isWindows) && kIsWeb == false);
+  bool is_desktop =
+      ((Platform.isLinux || Platform.isMacOS || Platform.isWindows) &&
+          kIsWeb == false);
   bool is_mobile = (Platform.isAndroid || Platform.isIOS || kIsWeb);
   WebViewController();
   Future<void> init({
@@ -22,18 +27,24 @@ class WebViewController {
   }) async {
     if (is_mobile) {
       late final webview_flutter.PlatformWebViewControllerCreationParams params;
-      if (webview_flutter.WebViewPlatform.instance is webview_flutter_wkwebview.WebKitWebViewPlatform) {
-        params = webview_flutter_wkwebview.WebKitWebViewControllerCreationParams(
+      if (webview_flutter.WebViewPlatform.instance
+          is webview_flutter_wkwebview.WebKitWebViewPlatform) {
+        params =
+            webview_flutter_wkwebview.WebKitWebViewControllerCreationParams(
           allowsInlineMediaPlayback: true,
-          mediaTypesRequiringUserAction: const <webview_flutter_wkwebview.PlaybackMediaTypes>{},
+          mediaTypesRequiringUserAction: const <webview_flutter_wkwebview
+              .PlaybackMediaTypes>{},
         );
       } else {
-        params = const webview_flutter.PlatformWebViewControllerCreationParams();
+        params =
+            const webview_flutter.PlatformWebViewControllerCreationParams();
       }
-      webview_mobile_controller = webview_flutter.WebViewController.fromPlatformCreationParams(params);
+      webview_mobile_controller =
+          webview_flutter.WebViewController.fromPlatformCreationParams(params);
       setState(() {});
       if (!kIsWeb) {
-        webview_mobile_controller.setJavaScriptMode(webview_flutter.JavaScriptMode.unrestricted);
+        webview_mobile_controller
+            .setJavaScriptMode(webview_flutter.JavaScriptMode.unrestricted);
         webview_mobile_controller.setNavigationDelegate(
           webview_flutter.NavigationDelegate(
             onProgress: (int progress) {
@@ -75,15 +86,20 @@ Page resource error:
       }
       webview_mobile_controller.loadRequest(uri);
       // #docregion platform_features
-      if (webview_mobile_controller.platform is webview_flutter_android.AndroidWebViewController) {
+      if (webview_mobile_controller.platform
+          is webview_flutter_android.AndroidWebViewController) {
         webview_flutter_android.AndroidWebViewController.enableDebugging(false);
-        (webview_mobile_controller.platform as webview_flutter_android.AndroidWebViewController).setMediaPlaybackRequiresUserGesture(false);
+        (webview_mobile_controller.platform
+                as webview_flutter_android.AndroidWebViewController)
+            .setMediaPlaybackRequiresUserGesture(false);
       }
       is_init = true;
     } else if (is_desktop) {
-      bool isWebviewAvailable = await webview_desktop.WebviewWindow.isWebviewAvailable();
+      bool isWebviewAvailable =
+          await webview_desktop.WebviewWindow.isWebviewAvailable();
       if (isWebviewAvailable) {
-        webview_desktop.Webview webview_desktop_controller = await webview_desktop.WebviewWindow.create(
+        webview_desktop.Webview webview_desktop_controller =
+            await webview_desktop.WebviewWindow.create(
           configuration: webview_desktop.CreateConfiguration(
             titleBarTopPadding: Platform.isMacOS ? 20 : 0,
           ),
